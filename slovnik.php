@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', 0);
 mb_internal_encoding('UTF-8');
 
 $zip = new ZipArchive;

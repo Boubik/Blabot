@@ -7,7 +7,8 @@
 
 <body>
     <?php
-    if (!file_exists($dic)) {
+    ini_set('max_execution_time', 0);
+    if (!file_exists("slova")) {
         header("Location: slovnik.php?return=true");
     }
 
