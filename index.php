@@ -7,6 +7,10 @@
 
 <body>
     <?php
+    if (!file_exists($dic)) {
+        header("Location: slovnik.php?return=true");
+    }
+
     require "functions.php";
     $param = load_csv();
 

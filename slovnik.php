@@ -60,3 +60,7 @@ for ($i = 0; $i < count($lines); $i++) {
     }
 }
 echo "done";
+
+if ($_GET["return"]) {
+    header("Location: index.php");
+}
