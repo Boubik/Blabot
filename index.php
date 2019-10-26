@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Blabol</title>
+    <style>
+        .none {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,37 +17,23 @@
         header("Location: slovnik.php?return=true");
     }
 
+    if (isset($_POST["submit"]) and $_POST["reload"]) {
+        header("Location: index.php");
+    }
+
+    echo '<form method="POST" action="">' . "\n";
+    echo '<input class="none" type="text" name="reload" value="true">';
+    echo '<input type="submit" name="submit" value="Reload">';
+    echo '</form>' . "\n";
+
     require "functions.php";
     $param = load_csv();
 
-    if (isset($_GET["odstavec"])) {
-        $odstavec = filter_input(INPUT_GET, "odstavec");
-        if ($odstavec < 1) {
-            $odstavec = 4;
-        }
-    } else {
-        $odstavec = 4;
-    }
-    if (isset($_GET["vet"])) {
-        $vet = filter_input(INPUT_GET, "vet");
-        if ($vet < 1) {
-            $vet = 40;
-        }
-    } else {
-        $vet = 40;
-    }
-
-    echo '<form method="GET" action="">';
-    echo 'Vět v odstavci <input type="number" name="vet" value="' . $vet . '">' . "<br>\n";
-    echo 'Odstavců<input type="number" name="odstavec" value="' . $odstavec . '">' . "<br>\n";
-    echo '<input type="submit" name="submit" value="Nastavit/Reload">';
-    echo '</form>';
-    echo "<br>\n";
-    echo "<br>\n";
-
     $i = 0;
     $k = 0;
+    $odstavec = rand(5, 15);
     while ($k != $odstavec) {
+        $vet = rand(25, 150);
         while ($i != $vet) {
             if ($i == 0) {
                 echo "<p>";
