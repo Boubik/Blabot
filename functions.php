@@ -85,18 +85,10 @@ function deleteDir($dirPath)
     rmdir($dirPath);
 }
 
-if (!function_exists('mb_ucfirst')) {
-
-    function mb_ucfirst($str, $encoding = "UTF-8", $lower_str_end = true)
+if (!function_exists('mb_ucfirst') && function_exists('mb_substr')) {
+    function mb_ucfirst($string)
     {
-        $first_letter = mb_strtoupper(mb_substr($str, 0, 1, $encoding), $encoding);
-        $str_end = "";
-        if ($lower_str_end) {
-            $str_end = mb_strtolower(mb_substr($str, 1, mb_strlen($str, $encoding), $encoding), $encoding);
-        } else {
-            $str_end = mb_substr($str, 1, mb_strlen($str, $encoding), $encoding);
-        }
-        $str = $first_letter . $str_end;
-        return $str;
+        $string = mb_strtoupper(mb_substr($string, 0, 1)) . mb_substr($string, 1);
+        return $string;
     }
 }

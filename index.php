@@ -48,7 +48,7 @@
                 echo "<p>";
             }
             $sentence = generate_sentence($param[rand(0, count($param) - 1)]);
-            echo mb_ucfirst($sentence) . " ";
+            echo mb_ucfirst(strtolower($sentence)) . " ";
             $i++;
         }
         echo "</p>";
